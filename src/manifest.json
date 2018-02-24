@@ -6,12 +6,18 @@
     "browser_action": {
         "default_popup": "html/popup.html"
     },
+	
+	"options_page": "html/options.html",
+	
     "background":{
-        "scripts":["js/eventPage.js"],
-        "presistent": false
+      "scripts": [ "js/eventPage.js" ],
+      "default_popup":  "html/popup.html",
+      "persistent": false
     },
+	
     "permissions": [
-        "activeTab",
-        "contextMenus"
+      "activeTab",
+      "tabs",
+      "contextMenus"
     ]
 }
