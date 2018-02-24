@@ -21,10 +21,11 @@ var t = [];
 var elem = [];
 
 for(var i = 0; i < arr.length; i++){
-    t[i] = document.createTextNode(arr[i]);
-    elem[i] = document.createElement("div");
-    elem[i].appendChild(t[i]);
-    dialogBox.appendChild(elem[i]);
+    elem[i] = document.createElement("BUTTON");
+    elem[i].textContent = arr[i];
+    var divElem = document.createElement("div");
+    divElem.appendChild(elem[i]);
+    dialogBox.appendChild(divElem);
     /*elem[i].addEventListener("click", function () {
         var text = document.createTextNode(arr[i] + " " + i);
         selectionContents.appendChild(text);
@@ -41,41 +42,41 @@ elem[0].addEventListener("click", function () {
     dialogBox.parentNode.removeChild(dialogBox);*/
 
     //temporary until we add custom phrasing/sentences/etc.
-    var textToAdd = document.createTextNode(text + " " + "text0");
+    var textToAdd = document.createTextNode("text0");
     div.appendChild(textToAdd);
     range.insertNode(div);
     dialogBox.parentNode.removeChild(dialogBox);
 });
 
 elem[1].addEventListener("click", function () {
-    var textToAdd = document.createTextNode(text + " " + "text1");
+    var textToAdd = document.createTextNode("text1");
     div.appendChild(textToAdd);
     range.insertNode(div);
     dialogBox.parentNode.removeChild(dialogBox);
 });
 
 elem[2].addEventListener("click", function () {
-    var textToAdd = document.createTextNode(text + " " + "text2");
+    var textToAdd = document.createTextNode("text2");
     div.appendChild(textToAdd);
     range.insertNode(div);
     dialogBox.parentNode.removeChild(dialogBox);
 });
 
 elem[3].addEventListener("click", function () {
-    var textToAdd = document.createTextNode(text + " " + "text3");
+    var textToAdd = document.createTextNode("text3");
     div.appendChild(textToAdd);
     range.insertNode(div);
     dialogBox.parentNode.removeChild(dialogBox);
 });
 
 elem[4].addEventListener("click", function () {
-    var textToAdd = document.createTextNode(text + " " + "text4");
+    var textToAdd = document.createTextNode("text4");
     div.appendChild(textToAdd);
     range.insertNode(div);
     dialogBox.parentNode.removeChild(dialogBox);
 });
 
-//div.appendChild(selectionContents);
+div.appendChild(selectionContents);
 range.insertNode(div);
 
 document.body.appendChild(dialogBox);
