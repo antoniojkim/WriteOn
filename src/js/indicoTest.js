@@ -30,7 +30,7 @@ function indicoAnalysis(){
     var text = "Last year was the first time I had ever been the new kid at school. For the first four days, I was completely alone. I don’t think I even spoke to a single person. Finally, at lunch on the fifth day, Karen Watson walked past her usual table and sat down right next to me. Even though I was new, I had already figured out who Karen Watson was. She was popular. Pretty soon, all of Karen’s friends were sitting there right next to me. I never became great friends with Karen, but after lunch that day, it seemed like all sorts of people were happy to be my friend. You cannot convince me that Karen did not know what she was doing. I have a great respect for her, and I learned a great deal about what it means to be a true leader.";
     var sentences = splitSentences(text);
     // $.post(
-    //     'https://apiv2.indico.io/apis/multiapi/batch?apis=sentimenthq,texttags,political,keywords,people,places,organizations,personality,emotion',
+    //     'https://apiv2.indico.io/apis/multiapi/batch?apis=sentimenthq,texttags,keywords,people,places,organizations,personality,emotion',
     //     JSON.stringify({
     //         'api_key': "952364b8a091bc91909e184032396897",
     //         'data': sentences
