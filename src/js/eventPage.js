@@ -13,3 +13,4 @@ chrome.contextMenus.onClicked.addListener(function (clickData) {
         chrome.tabs.executeScript(null, { file: 'js/contextMenuScript.js' });
     }
 });
+
