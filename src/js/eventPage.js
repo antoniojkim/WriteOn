@@ -10,6 +10,6 @@ chrome.contextMenus.onClicked.addListener(function (clickData) {
 
     //will change later to getting by tag (hardcoded)
     if (clickData.menuItemId == "getSuggestion" && clickData.selectionText) {
-        chrome.tabs.executeScript(null, { file: 'js/contextMenuScript.js' });
+        chrome.tabs.executeScript(null, { file: 'js/contextMenuScript.js'});
     }
 });
