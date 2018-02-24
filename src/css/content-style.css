@@ -1,0 +1,15 @@
+wow{
+	color: red;
+	position: absolute;
+	border: 1px solid red;
+}
+
+get_suggestion{
+	background-color: red;
+	position: absolute;
+	height: 300px;
+	width: 300px;
+	z-index: 10000;
+	cursor: hover
+
+}

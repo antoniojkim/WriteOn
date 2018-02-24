@@ -15,8 +15,19 @@ body{
 	height: 20px;
 }
 
-.showmore{
+#showmore{
 	margin-top: 5px;
 	display: inline-block;
 	float: right;
+}
+
+.wow{
+	height: 500px;
+}
+.more{
+	display: none;
+}
+
+get_suggestion{
+	background-color:blue;
 }

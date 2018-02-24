@@ -105,3 +105,22 @@ function bingBlogsSearchAPI(params, callback) {
         error: function () { console.log("error"); },
     });
 }
+
+function show_more(){
+	var x = document.getElementById("more");
+    if (x.style.display === "none") {
+        x.style.display = "inline-block";
+    } else {
+        x.style.display = "none"
+    }
+}
+document.getElementById('showmore').addEventListener('click', show_more);
+
+
+
+function b1(){
+	console.log(wow)
+	somethingreplace(wow);
+
+}
+document.getElementById('b1').addEventListener('click', b1);
