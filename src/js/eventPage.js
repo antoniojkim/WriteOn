@@ -13,7 +13,7 @@ chrome.contextMenus.onClicked.addListener(function (clickData) {
         //chrome.tabs.executeScript(null, { file: 'js/contextMenuScript.js'});
 
         var textInput = clickData.selectionText;
-        var urlQueried = "https://writerunblocker.azurewebsites.net/src/html/test.html?q="+ textInput;
+        var urlQueried = "https://writeon.azurewebsites.net/src/html/search.html?q=" + textInput;
 
         chrome.tabs.create({ url: urlQueried });
     }
