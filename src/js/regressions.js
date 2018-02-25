@@ -41,6 +41,93 @@ function multivariateRegression(response, result, output){
     return prediction;
 }
 
+function getStrongestEmotion(response){
+    const emotions = multivariateRegression(response, "emotion");
+    var strongestEmotion = emotionStrings[0];
+    var emotionValue = emotions[0];
+    for (i = 1; i < emotions.length; ++i){
+        if (emotions[i] > emotionValue){
+            strongestEmotion = emotionStrings[i];
+            emotionValue = emotions[i];
+        }
+    }
+    return strongestEmotion;
+}
+
+function extractPlace(response){
+    var results = response["results"]["places"]["results"];
+    var place = null;
+    var confidence = 0;
+    for (i = 0; i<results.length; ++i){
+        for (j = 0; j<results[i].length; ++j){
+            if (results[i][j]["confidence"] > confidence){
+                place = results[i][j]["text"];
+                confidence = results[i][j]["confidence"];
+            }
+        }
+    }
+    return place;
+}
+function extractOrganization(response){
+    var results = response["results"]["organizations"]["results"];
+    var organization = null;
+    var confidence = 0;
+    for (i = 0; i<results.length; ++i){
+        for (j = 0; j<results[i].length; ++j){
+            if (results[i][j]["confidence"] > confidence){
+                organization = results[i][j]["text"];
+                confidence = results[i][j]["confidence"];
+            }
+        }
+    }
+    return organization;
+}
+
+function getNewsSearchParams(){
+    var response = getResponse();
+    const sentiment = sentimentRegression(response);
+    // const strongestEmotion = getStrongestEmotion(response);
+    var params = [];
+    var place = extractPlace(response);
+    if (place !== null){
+        place = place.replace(" ", "+");
+        if (sentiment >= 0.5){
+            params.push("positive+news+"+place);
+        }
+        else{
+            params.push("negative+news+"+place);
+        }
+    }
+    var organization = extractOrganization(response);
+    if (organization !== null){
+        organization = organization.replace(" ", "+");
+        if (sentiment >= 0.5){
+            params.push("positive+news+"+organization);
+        }
+        else{
+            params.push("negative+news+"+organization);
+        }
+    }
+    console.log(params);
+    return params;
+}
+
+function textTagAnalysis(response){
+    var texttags = response["results"]["texttags"]["results"];
+    var maxtag = "";
+    var maxval = 0;
+    for (i = 0; i < texttags.length; ++i){
+        Object.keys(texttags[i]).forEach(function(key){
+            if (texttags[i][key] > maxval){
+                maxtag = key;
+                maxval = texttags[i][key];
+            }
+        });
+    }
+    console.log(maxtag);
+    console.log(maxval);
+}
+
 function runRegressions(){
     var response = getResponse();
     console.log(response);
@@ -64,20 +151,4 @@ function runRegressions(){
             ", Joy: "+emotion[4]);
     });
     textTagAnalysis(response);
-}
-
-function textTagAnalysis(response){
-    var texttags = response["results"]["texttags"]["results"];
-    var maxtag = "";
-    var maxval = 0;
-    for (i = 0; i < texttags.length; ++i){
-        Object.keys(texttags[i]).forEach(function(key){
-            if (texttags[i][key] > maxval){
-                maxtag = key;
-                maxval = texttags[i][key];
-            }
-        });
-    }
-    console.log(maxtag);
-    console.log(maxval);
 }
