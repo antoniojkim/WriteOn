@@ -2,17 +2,6 @@
  * Created by Antonio on 2018-02-24.
  */
 
-function datamuseAPI(params, callback){
-    $.ajax({
-        url: "https://api.datamuse.com/words?"+params+"&md=p",
-        type: "GET", /* or type:"GET" or type:"PUT" */
-        dataType: "json",
-        data: {},
-        success: function(response) { callback(response) },
-        error: function () { console.log("error"); }
-    });
-}
-
 function appendWord(text, iteration, params, topics){
 
     if (params === undefined || params === null){
