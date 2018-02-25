@@ -1,4 +1,14 @@
-var MAX_REFS = 1;
+var textInput = "";
+
+chrome.tabs.executeScript({
+    code: "window.getSelection().toString();"
+}, function (selection) {
+    textInput = selection[0];
+    urlQueried = 'https://writeon.azurewebsites.net/src/html/search.html?q=' + textInput;
+    chrome.tabs.create({ url: urlQueried });
+});
+
+/*var MAX_REFS = 1;
 var KEY = '8125bd8ac4be47f69188162591a4debb';
 var text;
 //input (from user)
@@ -138,4 +148,4 @@ function b1(){
     var link = "http://writeon.tech/src/html/search.html?q="+text
 	chrome.tabs.create({active: true, url: link});
 }
-document.getElementById('b1').addEventListener('click', b1);
+document.getElementById('b1').addEventListener('click', b1);*/
