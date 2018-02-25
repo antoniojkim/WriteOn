@@ -14,27 +14,34 @@ window.onload = function () {
 };
 
 function submit(){
-    var text = document.getElementsByName("sentence").value;
+    var text = document.getElementById("sentence").value;
+    console.log("Text:   "+text);
     // analyseText(text, function(response){
     //     setResponse(response);
+        var div = document.getElementById("newsContainer");
+        console.log(div);
+        $(div).empty();
         var suggestion  = getSuggestion();
         var params = getNewsSearchParams();
-        for (param in params){
+        for (param of params){
             bingNewsSearchAPI(param, function(response){
-                console.log(response);
+                for (i = 0; i<2; ++i){
+                    var a = generateNewsArticle(response["value"][i]["name"], response["value"][i]["description"], [, response["value"][i]["category"]]);
+                    div.appendChild(a);
+                }
             });
         }
     // });
 }
 
 var numArticles = 0;
-function addNewsArticle(parent, articleTitle, articleSummary, tags, imgUrl){
+function generateNewsArticle(articleTitle, articleSummary, tags, imgUrl){
     var div1 = document.createElement("div");
     if (numArticles%2 === 0){
         div1.setAttribute("class", "wow slideInUp item2");
     }
     else{
-        div1.setAttribute("class", "wow slideInUp item");
+        div1.setAttribute("class", "wow slideInUp item3");
     }
 
     var div2 = document.createElement("div");
@@ -63,10 +70,10 @@ function addNewsArticle(parent, articleTitle, articleSummary, tags, imgUrl){
         var span = document.createElement("span");
         span.setAttribute("class", "badge badge-primary");
         span.innerHTML = tag;
-        div2.setAttribute(span);
+        div2.appendChild(span);
     }
 
     numArticles++;
 
-    parent.appendChild(div1);
+    return div1;
 }

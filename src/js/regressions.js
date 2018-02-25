@@ -244,5 +244,4 @@ function runRegressions(){
             ", Fear: "+emotion[3]+
             ", Joy: "+emotion[4]);
     });
-    textTagAnalysis(response);
 }
