@@ -11,13 +11,13 @@
 	
     "background":{
       "scripts": [ "js/eventPage.js" ],
-      "default_popup":  "html/popup.html",
       "persistent": false
     },
-	
-    "permissions": [
-      "activeTab",
-      "tabs",
-      "contextMenus"
-    ]
+
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "contextMenus",
+    "http://api.cognitive.microsoft.com/bing/v7.0/search"
+  ]
 }

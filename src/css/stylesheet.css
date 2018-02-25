@@ -6,11 +6,28 @@ body{
 	padding: 10px;
 	width: 100%;
 	height: 100%;
-	background-color: yellow;
+
 }
 .output{
+
 	padding: 10px;
 	width: 100%;
 	height: 20px;
-	background-color: green;
+}
+
+#showmore{
+	margin-top: 5px;
+	display: inline-block;
+	float: right;
+}
+
+.wow{
+	height: 500px;
+}
+.more{
+	display: none;
+}
+
+get_suggestion{
+	background-color:blue;
 }
