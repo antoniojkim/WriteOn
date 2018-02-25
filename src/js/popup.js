@@ -1,12 +1,71 @@
-var MAX_REFS = 5;
+var MAX_REFS = 1;
 var KEY = '8125bd8ac4be47f69188162591a4debb';
 var text;
+//input (from user)
+var userText = "";
+
+//input (from model)
+var keyWordsOrPhrases = [];
+
+var strongestSentiment = 'negative'; //sentiment...
+
+var strongestEmotion = 'anger'; //emotions...
+
+//output
+var newsUrls = [];
+var summarizedNews = [];
+
+var videoUrls = [];
+
+var newsQueries = [];
+
 chrome.tabs.executeScript({
     code: "window.getSelection().toString();"
 }, function(selection) {
     text = selection[0];
     document.getElementById("input").innerHTML = selection[0];
+    userText = selection[0];
+
+    initValues();
 });
+
+function initValues(){
+    
+    //analyze text using indico model
+    analyseText(userText, setResponse);
+
+    // response...get:
+    // emotion
+    // sentiment
+    // key words -> articles/videos
+    keyWordsOrPhrases = getKeyWordsOrPhrases();
+
+    strongestSentiment = getSentiment();
+
+    strongestEmotion = getEmotion();
+
+    //update queries
+    for(i = 0; i < MAX_REFS; i++){
+        newsQueries[i] = strongestSentiment + " " + strongestEmotion + " " + keyWordsOrPhrases[i];
+    }
+
+    //TEMPORARY
+    newsQueries[0] = "negative angry gun control";
+}
+
+//TEMPORARY FUNCS
+function getKeyWordsOrPhrases(){
+    return keyWordsOrPhrases;
+}
+
+function getSentiment() {
+    return "negative";
+}
+
+function getEmotion() {
+    return "angry";
+}
+//TEMPORARY FUNCS
 
 document.getElementById('showmore').addEventListener('click', function () {
     var x = document.getElementById("more");
@@ -18,17 +77,27 @@ document.getElementById('showmore').addEventListener('click', function () {
 });
 
 document.getElementById('news').addEventListener('click', function () {
-    alert('a');
-    bingNewsSearchAPI("banana republic", newsResponseHandler);
+    for(i = 0; i < newsQueries.length; i++){
+        bingNewsSearchAPI(newsQueries[i], newsResponseHandler);
+    }
 });
+
+function summaryResponseHandler(response) {
+    //append array with new article summary
+    summarizedNews[summarizedNews.length] = response;
+}
 
 function newsResponseHandler(response) {
     var jsonObject = response;
     var newsArticles = jsonObject.value;
 
-    for (i = 0; i < newsArticles.length && i < 2 * MAX_REFS; i += 2) {
-        //remove and input into button layouts
-        console.log(newsArticles[i].url);
+    for (i = 0; i < newsArticles.length && i < MAX_REFS; i++) {
+        var articleUrl = newsArticles[i].url;
+        console.log(articleUrl);
+        newsUrls[i] = articleUrl;
+
+        //summarize article
+        summarizeArticle(articleUrl, summaryResponseHandler);
     }
 };
 
@@ -46,19 +115,21 @@ function bingNewsSearchAPI(params, callback) {
     });
 }
 
-document.getElementById('videos').addEventListener('click', function(){
-    bingVideosSearchAPI("banana republic", videosResponseHandler);
+document.getElementById('videos').addEventListener('click', function () {
+    for (i = 0; i < keyWordsOrPhrases.length; i++) {
+       bingVideosSearchAPI(keyWordsOrPhrases[i], videosResponseHandler);
+    }
 });
 
 function videosResponseHandler(response) {
     var jsonObject = response;
     var videos = jsonObject.value;
 
-    console.log(videos);
-
-    for (i = 0; i < videos.length && i < 2 * MAX_REFS; i += 2) {
+    for (i = 0; i < videos.length && i < MAX_REFS; i++) {
         //remove and input into button layouts
-        console.log(videos[i].webSearchUrl);
+        var webUrl = videos[i].webSearchUrl;
+        console.log(webUrl);
+        videosUrls[i] = webUrl;
     }
 };
 
@@ -76,43 +147,12 @@ function bingVideosSearchAPI(params, callback) {
     });
 }
 
-
-document.getElementById('blogs').addEventListener('click', function () {
-    bingBlogsSearchAPI("banana", blogsResponseHandler);
-});
-
-function blogsResponseHandler(response) {
-    var jsonObject = response;
-    var blogs = jsonObject.value;
-
-    console.log(blogs);
-
-    for (i = 0; i < blogs.length && i < 2 * MAX_REFS; i += 2) {
-        //remove and input into button layouts
-        console.log(blogs[i].webSearchUrl);
-    }
-};
-
-function bingBlogsSearchAPI(params, callback) {
-    $.ajax({
-        url: "https://www.twingly.com/search?q=gun+control",
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-        },
-        type: "GET", /* or type:"GET" or type:"PUT" */
-        dataType: "json",
-        data: {},
-        success: function (response) { callback(response) },
-        error: function () { console.log("error"); },
-    });
-}
-
 function show_more(){
 	var x = document.getElementById("more");
     if (x.style.display === "none") {
         x.style.display = "inline-block";
     } else {
-        x.style.display = "none"
+        x.style.display = "none";
     }
 }
 document.getElementById('showmore').addEventListener('click', show_more);
