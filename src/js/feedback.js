@@ -1,5 +1,9 @@
 
 const responses = {
+    "positive++": [
+        "Love the enthusiastic tone! Keep it up.",
+        "Way to keep a positive attitude!"
+    ],
     "positive": {
         "surprise": [
             "It sounds like you were surprised by something. Why don't you talk more about that?"
@@ -46,19 +50,13 @@ function getSuggestion(){
 }
 
 function generateSuggestion(response){
-    const emotions = multivariateRegression(response, "emotion");
-    var strongestEmotion = emotionStrings[0];
-    var emotionValue = emotions[0];
-    for (i = 1; i < emotions.length; ++i){
-        if (emotions[i] > emotionValue){
-            strongestEmotion = emotionStrings[i];
-            emotionValue = emotions[i];
-        }
-    }
-
+    const strongestEmotion = getStrongestEmotion(response);
     const sentiment = sentimentRegression(response);
     if (sentiment < 0.1){
         return getRandomItem(responses["negative--"]);
+    }
+    else if (sentiment > 0.9){
+        return getRandomItem(responses["positive++"]);
     }
     else if (strongestEmotion === "Surprise" || strongestEmotion === "Joy"){ //positive emotions
         if (sentiment >= 0.5){ // positive sentiments
