@@ -66,7 +66,7 @@ function getEmotion() {
     return "angry";
 }
 //TEMPORARY FUNCS
-
+/*
 document.getElementById('showmore').addEventListener('click', function () {
     var x = document.getElementById("more");
     if (x.style.display === "none") {
@@ -82,6 +82,12 @@ document.getElementById('news').addEventListener('click', function () {
     }
 });
 
+document.getElementById('videos').addEventListener('click', function () {
+    for (i = 0; i < keyWordsOrPhrases.length; i++) {
+       bingVideosSearchAPI(keyWordsOrPhrases[i], videosResponseHandler);
+    }
+});
+*/
 function summaryResponseHandler(response) {
     //append array with new article summary
     summarizedNews[summarizedNews.length] = response;
@@ -102,11 +108,7 @@ function newsResponseHandler(response) {
 };
 
 
-document.getElementById('videos').addEventListener('click', function () {
-    for (i = 0; i < keyWordsOrPhrases.length; i++) {
-       bingVideosSearchAPI(keyWordsOrPhrases[i], videosResponseHandler);
-    }
-});
+
 
 function videosResponseHandler(response) {
     var jsonObject = response;
@@ -133,7 +135,7 @@ document.getElementById('showmore').addEventListener('click', show_more);
 
 
 function b1(){
-    var link = "https://writerunblocker.azurewebsites.net/src/html/test.html?q="+text
+    var link = "http://writeon.tech/src/html/search.html?q="+text
 	chrome.tabs.create({active: true, url: link});
 }
 document.getElementById('b1').addEventListener('click', b1);
