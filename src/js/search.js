@@ -11,7 +11,7 @@ window.onload = function () {
         data[tmp[0]] = tmp[1];
     }
 
-    data["q"] = data["q"].replace("%20", " ");
+    data["q"] = decodeURI(data["q"]);
     console.log(data["q"]);
     document.getElementById("sentence").innerHTML = data["q"];
 };
