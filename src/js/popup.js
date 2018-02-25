@@ -19,6 +19,8 @@ var videoUrls = [];
 
 var newsQueries = [];
 
+var suggestion = '';
+
 chrome.tabs.executeScript({
     code: "window.getSelection().toString();"
 }, function(selection) {
@@ -48,8 +50,12 @@ function initValues(){
         newsQueries[i] = strongestSentiment + " " + strongestEmotion + " " + keyWordsOrPhrases[i];
     }
 
+    suggestion = getSuggestion();
+
+    console.log(suggestion);
+
     //TEMPORARY
-    newsQueries[0] = "negative angry gun control";
+    newsQueries[0] = "positive happy gun control";
 }
 
 //TEMPORARY FUNCS
