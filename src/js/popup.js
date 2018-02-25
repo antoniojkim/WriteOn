@@ -108,8 +108,13 @@ function newsResponseHandler(response) {
 };
 
 
-
-
+/*
+document.getElementById('videos').addEventListener('click', function () {
+    for (i = 0; i < keyWordsOrPhrases.length; i++) {
+       bingVideosSearchAPI(keyWordsOrPhrases[i], videosResponseHandler);
+    }
+});
+ */
 function videosResponseHandler(response) {
     var jsonObject = response;
     var videos = jsonObject.value;
@@ -122,6 +127,7 @@ function videosResponseHandler(response) {
     }
 };
 
+
 function show_more(){
 	var x = document.getElementById("more");
     if (x.style.display === "none") {
@@ -132,10 +138,13 @@ function show_more(){
 }
 document.getElementById('showmore').addEventListener('click', show_more);
 
-
-
 function b1(){
     var link = "http://writeon.tech/src/html/search.html?q="+text
 	chrome.tabs.create({active: true, url: link});
 }
-document.getElementById('b1').addEventListener('click', b1);
+
+document.getElementById('b1').addEventListener('click', b1)
+
+
+
+

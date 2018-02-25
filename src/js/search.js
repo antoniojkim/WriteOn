@@ -10,7 +10,10 @@ window.onload = function () {
         tmp = params[i].split('=');
         data[tmp[0]] = tmp[1];
     }
-    console.log(data);
+
+    data["q"] = data["q"].replace("%20", " ");
+    console.log(data["q"]);
+    document.getElementById("sentence").innerHTML = data["q"];
 };
 
 function getEmotionChart(emotionDiv){
