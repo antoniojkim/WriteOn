@@ -2,7 +2,12 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <script src="../js/popup.js"></script>
+        <script src="../js/wow.min.js"></script>
+              <script>
+              new WOW().init();
+              </script>
+
+        <link rel="stylesheet" href="../css/animate.css">
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -16,21 +21,91 @@
         margin: 1em;
         padding: 1em;   
         width: 100%;
-        min-height: 150px;
+        min-height: 200px;
         border: solid 1px #ccc;
       }
       .item{
-        text-align: center
+        background-color: #eee;
+        border: 1px solid #cacaca;
+        height: 317px; margin: 4em 0;
+        text-align: right;
       }
-
+      .item img{
+        height: 315;
+        margin-left: 2em;
+      }
+      .item .container{
+          padding: 0;
+      }
+      .item2{
+        background-color: #f8f8f8;
+        border: 1px solid #eaeaea;
+        height: 317px; margin: 2em 0;
+        text-align: left;
+      }
+      .item2 .container{
+          padding: 0;
+      }
+      .item2 img{
+        height: 315px;
+        margin-right: 2em;
+      }
+      .item iframe{
+        display: inline-block;
+        margin-left: 2em;
+      }
+      .item2 iframe{
+        display: inline-block;
+        margin-right: 2em;
+      }
+      .title{
+        font-size: 5em;
+      }
     </style>
     <body>
         <!--<div class="bg-secondary output"></div>-->
 <div class="container">
-<form action="/action_page.php">
-  Last name: <input type="text" name="lname"><br>
-  <input type="submit" value="Submit">
-</form>
+  <h1 class="title">- VIDEOS</h1>
+  <hr><br>
+<div class="wow slideInUp item2">
+  <div class="container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/xpVfcZ0ZcFM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="float-left"></iframe>
+    <h1 class="display-4">Fluid jumbotron</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    <span class="badge badge-primary">Violence</span>
+    <span class="badge badge-primary">Shooting</span>
+    <span class="badge badge-primary">America</span>
+  </div>
+</div>
+<div class="wow slideInUp item">
+  <div class="container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/xpVfcZ0ZcFM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="float-right"></iframe>
+    <h1 class="display-4">Fluid jumbotron</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    <span class="badge badge-primary">Lottery</span>
+    <span class="badge badge-primary">Winning</span>
+    <span class="badge badge-primary">London</span>
+  </div>
+</div>
+<div class="wow slideInUp item2">
+  <div class="container">
+    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22200%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_161c9d840b3%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_161c9d840b3%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2274.4296875%22%20y%3D%22104.453125%22%3E200x200%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" class="rounded float-left" alt="...">
+    <h1 class="display-4">Fluid jumbotron</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    <span class="badge badge-primary">Singer</span>
+    <span class="badge badge-primary">Scandel</span>
+    <span class="badge badge-primary">Chris Brow</span>
+  </div>
+</div>
+<div class="wow slideInUp item">
+  <div class="container">
+    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22200%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_161c9d840b3%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_161c9d840b3%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2274.4296875%22%20y%3D%22104.453125%22%3E200x200%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" class="rounded float-right" alt="..." height="200px" style="padding: 0;">
+    <h1 class="display-4">Fluid jumbotron</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    <span class="badge badge-primary">Political</span>
+    <span class="badge badge-primary">Trump</span>
+    <span class="badge badge-primary">America</span>
+  </div>
 </div>
         <script type="text/javascript" src="../js/popup.js"></script>
     </body>
