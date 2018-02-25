@@ -81,6 +81,12 @@ document.getElementById('news').addEventListener('click', function () {
         bingNewsSearchAPI(newsQueries[i], newsResponseHandler);
     }
 });
+
+document.getElementById('videos').addEventListener('click', function () {
+    for (i = 0; i < keyWordsOrPhrases.length; i++) {
+       bingVideosSearchAPI(keyWordsOrPhrases[i], videosResponseHandler);
+    }
+});
 */
 function summaryResponseHandler(response) {
     //append array with new article summary
@@ -101,14 +107,13 @@ function newsResponseHandler(response) {
     }
 };
 
+
 /*
 document.getElementById('videos').addEventListener('click', function () {
     for (i = 0; i < keyWordsOrPhrases.length; i++) {
        bingVideosSearchAPI(keyWordsOrPhrases[i], videosResponseHandler);
     }
 });
-/*
-
  */
 function videosResponseHandler(response) {
     var jsonObject = response;
