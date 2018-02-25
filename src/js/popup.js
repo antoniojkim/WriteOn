@@ -19,8 +19,6 @@ var videoUrls = [];
 
 var newsQueries = [];
 
-var suggestion = '';
-
 chrome.tabs.executeScript({
     code: "window.getSelection().toString();"
 }, function(selection) {
@@ -51,12 +49,8 @@ function initValues(){
         newsQueries[i] = strongestSentiment + " " + strongestEmotion + " " + keyWordsOrPhrases[i];
     }
 
-    suggestion = getSuggestion();
-
-    console.log(suggestion);
-
     //TEMPORARY
-    newsQueries[0] = "positive happy gun control";
+    newsQueries[0] = "negative angry gun control";
 }
 
 //TEMPORARY FUNCS
@@ -107,19 +101,6 @@ function newsResponseHandler(response) {
     }
 };
 
-function bingNewsSearchAPI(params, callback) {
-    $.ajax({
-        url: "https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=" + params,
-        type: "GET", /* or type:"GET" or type:"PUT" */
-        dataType: "json",
-        data: {},
-        success: function (response) { callback(response) },
-        error: function () { console.log("error"); },
-        headers: {
-            'Ocp-Apim-Subscription-Key': KEY,
-        }
-    });
-}
 
 document.getElementById('videos').addEventListener('click', function () {
     for (i = 0; i < keyWordsOrPhrases.length; i++) {
@@ -138,20 +119,6 @@ function videosResponseHandler(response) {
         videosUrls[i] = webUrl;
     }
 };
-
-function bingVideosSearchAPI(params, callback) {
-    $.ajax({
-        url: "https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=" + params,
-        type: "GET", /* or type:"GET" or type:"PUT" */
-        dataType: "json",
-        data: {},
-        success: function (response) { callback(response) },
-        error: function () { console.log("error"); },
-        headers: {
-            'Ocp-Apim-Subscription-Key': KEY,
-        }
-    });
-}
 
 function show_more(){
 	var x = document.getElementById("more");

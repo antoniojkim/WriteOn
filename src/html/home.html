@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -9,12 +9,12 @@
 
         <link rel="stylesheet" href="../css/animate.css">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="../js/home.js"></script>
         <script src="../js/popup.js"></script>
         <script src="https://www.lactame.com/lib/ml/3.2.0/ml.min.js"></script>
         <script src="../js/indico.js"></script>
         <script src="../js/regressions.js"></script>
         <script src="../js/feedback.js"></script>
+        <script src="../js/search.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -83,6 +83,43 @@
         margin: 0;
         padding: 0;
       }
+      .item3{
+        background-color: #eee;
+        border: 1px solid #cacaca;
+        min-height: 202px; 
+        margin: 4em 0;
+        text-align: right;
+      }
+      .item3 img{
+        height: 200px;
+        margin-left: 2em;
+      }
+      .item3 .container{
+          padding: 0;
+      }
+      .item2{
+        background-color: #f8f8f8;
+        border: 1px solid #eaeaea;
+        min-height: 202px; 
+        margin: 2em 0;
+        text-align: left;
+      }
+      .item2 .container{
+          padding: 0;
+      }
+      .item2 img{
+        min-height: 200px;
+        max-height:300px;
+        margin-right: 2em;
+      }
+      .title{
+        font-size: 5em;
+      }
+      p{
+        margin: 5px;
+      }
+
+        <!-- -->
 
     </style>
     <body>
@@ -93,13 +130,13 @@
   <div class="box2 wow fadeIn delay-05s">
   <div class="row  ">
       <div class="col main_header">
-          <h1>Title</h1>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+          <h1>Search</h1>
+          Suggested videos and articles based on your text selection.
 
 
       </div>
       <div class="col">
-          <form action="/action_page.php">
+          <form action="/search.html?q=">
               <textarea class = "input_text" rows="4" cols="50" name="sentence" placeholder=""></textarea><br>
               <input class = "input_button btn btn-light" type="submit" value="Submit">
           </form>
@@ -130,42 +167,38 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col box hvr-fade wow slideInUp ">
-      <div class="item">
-        <img src="http://www.myeducationresearch.org/wp-content/uploads/2013/08/Published-Books-in-Libraries.jpg">
-      </div>
-    </div>
-    <div class="col box hvr-fade  wow slideInUp ">
-      <div class="item">
-        more coming soon...
-      </div>
-    </div>
-    <div class="col box hvr-fade wow slideInUp ">
-      <div class="item">
-        more coming soon...
-      </div>
-    </div>
-  </div>
-        <a id="showmore" >Show More</a>
-        <div class="clearfix"></div>
-        <div style = "display: none" id="more">
-            wow
 
-        </div>
 </div>
+
 <br><br><br><hr>
 
   <div class="" style="height: 150px">
   <div class="row wow slideInUp ">
     <div class="col">
 
-        footer
+
     </div>
     <div class="col">
 
     </div>
   </div>
+
+  <div class = "footer">
+      <h4 style="text-align: center; color: #aaa;">
+          Hack The Valley II
+      </h4>
+
+      <br>
+      <img src = "https://www.seiloc.com/en/wp-content/uploads/sites/2/2017/10/Microsoft-Azure.png" height = "70" style = "position: relative; left: 425px">
+
+      <img src = "https://cdn.datafloq.com/cache/04/b1/730666-Big-Data-indico-data-solutions-0.png" height = "30" width = "60" style = "position: relative; left: 525px">
+
+      <p style="text-align: center; color: #aaa;">Created by:  
+          Antonio, Garland, Marlin, Paul
+      </p>
+
+  </div>
         <script type="text/javascript" src="../js/popup.js"></script>
-    </body>
+
+</body>
 </html>

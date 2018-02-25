@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script src="../js/wow.min.js"></script>
+              <script>
+              new WOW().init();
+              </script>
+
+        <link rel="stylesheet" href="../css/animate.css">
+        <script src="../jquery-3.3.1.js"></script>
+        <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
+        <!--<script src="../js/popup.js"></script>-->
+        <script src="https://www.lactame.com/lib/ml/3.2.0/ml.min.js"></script>
+        <script src="../js/indico.js"></script>
+        <script src="../js/bing.js"></script>
+        <script src="../js/regressions.js"></script>
+        <script src="../js/feedback.js"></script>
+        <script src="../js/search.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      <!--<link href="../css/stylesheet.css" rel="stylesheet">-->
+      <link href="../css/hover.css" rel="stylesheet" media="all">
+        <title></title>
+    </head>
+    <style type="text/css">
+      .box{
+        margin: 1em;
+        padding: 0em;
+        width: 100%;
+        height: 175px;
+        border: solid 1px #ccc;
+        overflow: hidden;
+      }
+      .box2{
+        margin: 1em 0em;
+        padding: 0em;
+        width: 100%;
+        height: 100%;
+        border: solid 1px #ccc;
+        overflow: hidden;
+        background-color: #272e36;
+      }
+      .item{
+        color:#ccc;
+        text-align: center
+      }
+      .item img{
+        opacity: 0.4;
+        overflow: hidden;
+          height: 100%;
+          width: 100%;
+      }
+      .item-header{
+        z-index: 10000;
+        color: white;
+        position:relative;
+        top:0;
+      }
+      .title{
+        font-size: 5em;
+      }
+      .box2 .input_text{
+        width: 100%;
+          height: 100px;
+          margin: 0px;
+      }
+      .box2 .input_button{
+        width: 100%;
+          margin: 0px 0px ;
+          margin-top: 5px;
+      }
+      .main_header{
+        margin: 20px;
+        color:white;
+      }
+      html{
+        padding: 0;
+        margin: 0;
+      }
+      body{
+        margin: 0;
+        padding: 0;
+      }
+      .item3{
+        background-color: #eee;
+        border: 1px solid #cacaca;
+        min-height: 202px; 
+        margin: 4em 0;
+        text-align: right;
+        padding: 2em;
+      }
+      .item3 img{
+        height: 200px;
+        margin-left: 2em;
+      }
+      .item3 .container{
+          padding: 0;
+      }
+      .item2{
+        background-color: #f8f8f8;
+        border: 1px solid #eaeaea;
+        min-height: 202px; 
+        margin: 2em 0;
+        text-align: left;
+        padding: 2em;
+      }
+      .item2 .container{
+          padding: 0;
+      }
+      .item2 img{
+        min-height: 200px;
+        max-height:300px;
+        margin-right: 2em;
+        padding: 10px;
+      }
+      .title{
+        font-size: 5em;
+      }
+          .box3{
+        margin: 1em 0 ;
+        padding: 1em 2em;
+        width: 100%;
+        height: 100%;
+        border: solid 1px #ccc;
+        overflow: hidden;
+        background-color: #ddd;
+      }
+      .badge{
+        margin: 0px 2px; 
+      }
+
+    </style>
+    <body>
+<div class="container">
+  <h1 class="title">- FEED</h1>
+  <hr><br>
+
+  <div class="box2 wow fadeIn delay-05s">
+  <div class="row  ">
+      <div class="col main_header">
+          <textarea class = "input_text" rows="4" cols="50" id="sentence" placeholder=""></textarea><br>
+          <input class = "input_button btn btn-light" type="submit" value="Submit" onclick="submit()">
+      </div>
+  </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="box3 wow slideInUp">
+    <h1 style="display: inline-block; float: left;">Feedback</h1><i id="feedback-arrow" class="fa fa-angle-down fa-3x" style="float: right; display: inline-block; margin-right: 0.2em;"></i>
+    <div id="feedback-content" style="display: none; width: 100%">
+      <hr>
+      hello
+    </div>
+  </div>
+</div>
+
+    <div class="container" id="newsContainer">
+    </div>
+
+<!--<div class="wow slideInUp item2">-->
+  <!--<div class="container">-->
+    <!--<img src="https://www.politicususa.com/wp-content/uploads/2017/02/Screen-Shot-2017-02-05-at-12.18.35-PM-701x520.png" class="rounded float-left" alt="...">-->
+    <!--<h1 class="display-4">Fluid jumbotron</h1>-->
+    <!--<p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.-->
+          <!--Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>-->
+    <!--<span class="badge badge-primary">Violence</span>-->
+    <!--<span class="badge badge-primary">Shooting</span>-->
+    <!--<span class="badge badge-primary">America</span>-->
+  <!--</div>-->
+<!--</div>-->
+<!--<div class="wow slideInUp item3">-->
+  <!--<div class="container">-->
+    <!--<img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22200%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_161c9d840b3%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_161c9d840b3%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2274.4296875%22%20y%3D%22104.453125%22%3E200x200%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" class="rounded float-right" alt="..." height="200px" style="padding: 0;">-->
+    <!--<h1 class="display-4">Fluid jumbotron</h1>-->
+    <!--<p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>-->
+    <!--<span class="badge badge-primary">Lottery</span>-->
+    <!--<span class="badge badge-primary">Winning</span>-->
+    <!--<span class="badge badge-primary">London</span>-->
+  <!--</div>-->
+<!--</div>-->
+<!--<div class="wow slideInUp item2">-->
+  <!--<div class="container">-->
+    <!--<img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22200%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_161c9d840b3%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_161c9d840b3%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2274.4296875%22%20y%3D%22104.453125%22%3E200x200%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" class="rounded float-left" alt="...">-->
+    <!--<h1 class="display-4">Fluid jumbotron</h1>-->
+    <!--<p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>-->
+    <!--<span class="badge badge-primary">Singer</span>-->
+    <!--<span class="badge badge-primary">Scandel</span>-->
+    <!--<span class="badge badge-primary">Chris Brow</span>-->
+  <!--</div>-->
+<!--</div>-->
+<!--<div class="wow slideInUp item3">-->
+  <!--<div class="container">-->
+    <!--<img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22200%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_161c9d840b3%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_161c9d840b3%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2274.4296875%22%20y%3D%22104.453125%22%3E200x200%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" class="rounded float-right" alt="..." height="200px" style="padding: 0;">-->
+    <!--<h1 class="display-4">Fluid jumbotron</h1>-->
+    <!--<p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>-->
+    <!--<span class="badge badge-primary">Political</span>-->
+    <!--<span class="badge badge-primary">Trump</span>-->
+    <!--<span class="badge badge-primary">America</span>-->
+  <!--</div>-->
+<!--</div>-->
+<br><br><br><hr>
+
+  <div class="" style="height: 150px">
+  <div class="row wow slideInUp ">
+    <div class="col">
+
+        footer
+    </div>
+    <div class="col">
+
+    </div>
+  </div>
+  <script type="text/javascript">
+    function feedback(){
+  var x = document.getElementById("feedback-content");
+    if (x.style.display === "none") {
+        x.style.display = "inline-block";
+        document.getElementById("feedback-arrow").classList.remove("fa-angle-down");
+        document.getElementById("feedback-arrow").classList.add("fa-angle-up");
+    } else {
+        x.style.display = "none";
+        document.getElementById("feedback-arrow").classList.remove("fa-angle-up");
+        document.getElementById("feedback-arrow").classList.add("fa-angle-down");
+        
+    }
+}
+document.getElementById('feedback-arrow').addEventListener('click', feedback);
+  </script>
+        <script type="text/javascript" src="../js/popup.js"></script>
+    </body>
+</html>
