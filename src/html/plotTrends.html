@@ -78,7 +78,7 @@
         var data = google.visualization.arrayToDataTable(emotionDataSet);
 
     var options = {
-      title : 'Regression Analsis',
+      title : 'Emotional Regression Analsis',
       vAxis: {title: 'Emotional % Stimulus'},
       hAxis: { title: 'Number of uses' },
       pointSize: 0,
@@ -87,30 +87,35 @@
               opacity: 0.2 * lineWidth[0],
               visibleInLegend: true,
               color: 'red',
+              tooltip: false,
               lineWidth: lineWidth[0]
           },
           1: {
               opacity: 0.2 * lineWidth[1],
               color: 'purple',
               visibleInLegend: true,
+              tooltip: false,
               lineWidth: lineWidth[1]
           },
           2: {
               opacity: 0.2 * lineWidth[2],
               color: 'orange',
               visibleInLegend: true,
+              tooltip: false,
               lineWidth: lineWidth[2]
           },
           3: {
               opacity: 0.2 * lineWidth[3],
               color: 'blue',
               visibleInLegend: true,
+              tooltip: false,
               lineWidth: lineWidth[3]
           },
           4: {
               opacity: 0.2 * lineWidth[4],
               color: 'black',
               visibleInLegend: true,
+              tooltip: false,
               lineWidth: lineWidth[4]
           },
       }
