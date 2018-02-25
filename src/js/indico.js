@@ -37,7 +37,7 @@ var response = null;
 function getResponse(){
     if (response === null){
         // return getRandomItem(previousResponses)
-        return previousResponses[0];
+        return previousResponses[1];
     }
     return response;
 }

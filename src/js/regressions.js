@@ -2,6 +2,16 @@
  * Created by Antonio on 2018-02-24.
  */
 
+function datamuseAPI(params, callback){
+    $.ajax({
+        url: "https://api.datamuse.com/words?"+params+"&md=p",
+        type: "GET", /* or type:"GET" or type:"PUT" */
+        dataType: "json",
+        data: {},
+        success: function(response) { callback(response) },
+        error: function () { console.log("error"); }
+    });
+}
 
 function sentimentRegression(response, output){
     var y = response["results"]["sentimenthq"]["results"];
@@ -30,8 +40,6 @@ function multivariateRegression(response, result, output){
         x.push([i]);
         y.push(y_);
     }
-    // console.log(x);
-    // console.log(y);
 
     const mlr = new ML.MultivariateLinearRegression(x, y);
     const prediction = mlr.predict([10]);
@@ -83,6 +91,96 @@ function extractOrganization(response){
     return organization;
 }
 
+Array.prototype.contains = function(obj) {
+    var i = this.length;
+    while (i--) {
+        if (this[i] === obj) {
+            return true;
+        }
+    }
+    return false;
+};
+
+function extractKeywords(response){
+    var results = response["results"]["keywords"]["results"];
+    var keywords = [];
+    var confidences = [];
+    for (i = 0; i<results.length; ++i){
+        Object.keys(results[i]).forEach(function(key){
+            const j = i;
+            datamuseAPI("sp="+key, function(res){
+                if (res[0] !== undefined && res[0]["tags"] !== undefined &&
+                    res[0]["tags"].contains("n") && !res[0]["tags"].contains("prop")){
+                    if (keywords.length === 0){
+                        keywords.push(key);
+                        confidences.push(results[j][key]);
+                    }
+                    else if (results[j][key] > confidences[0]){
+                        if (keywords.length === 1){
+                            keywords.push(key);
+                            confidences.push(results[j][key]);
+                        }
+                        else if (results[j][key] > confidences[1]){
+                            keywords[0] = keywords[1];
+                            confidences[0] = confidences[1];
+                            keywords[1] = key;
+                            confidences[1] = results[j][key];
+                        }
+                        else{
+                            keywords[0] = key;
+                            confidences[0] = results[j][key];
+                        }
+                    }
+                    else if (keywords.length === 1){
+                        keywords.push(keywords[0]);
+                        confidences.push(confidences[0]);
+                        keywords[0] = key;
+                        confidences[0] = results[j][key];
+                    }
+                }
+            });
+        });
+    }
+    return keywords;
+}
+
+function extractTextTags(response){
+    var results = response["results"]["texttags"]["results"];
+    var tags = [];
+    var confidences = [];
+    for (i = 0; i<results.length; ++i){
+        Object.keys(results[i]).forEach(function(key){
+            if (tags.length === 0){
+                tags.push(key);
+                confidences.push(results[i][key]);
+            }
+            else if (results[i][key] > confidences[0]){
+                if (tags.length === 1){
+                    tags.push(key);
+                    confidences.push(results[i][key]);
+                }
+                else if (results[i][key] > confidences[1]){
+                    tags[0] = tags[1];
+                    confidences[0] = confidences[1];
+                    tags[1] = key;
+                    confidences[1] = results[i][key];
+                }
+                else{
+                    tags[0] = key;
+                    confidences[0] = results[i][key];
+                }
+            }
+            else if (tags.length === 1){
+                tags.push(tags[0]);
+                confidences.push(confidences[0]);
+                tags[0] = key;
+                confidences[0] = results[i][key];
+            }
+        });
+    }
+    return tags;
+}
+
 function getNewsSearchParams(){
     var response = getResponse();
     const sentiment = sentimentRegression(response);
@@ -108,24 +206,20 @@ function getNewsSearchParams(){
             params.push("negative+news+"+organization);
         }
     }
+    // var keywords = extractKeywords(response);
+    // console.log(keywords);
+    var tags = extractTextTags(response);
+    for (i = 0; i<2 && params.length < 2; ++i){
+        tags[i] = tags[i].replace(" ", "+");
+        if (sentiment >= 0.5){
+            params.push("positive+news+"+tags[i]);
+        }
+        else{
+            params.push("negative+news+"+tags[i]);
+        }
+    }
     console.log(params);
     return params;
-}
-
-function textTagAnalysis(response){
-    var texttags = response["results"]["texttags"]["results"];
-    var maxtag = "";
-    var maxval = 0;
-    for (i = 0; i < texttags.length; ++i){
-        Object.keys(texttags[i]).forEach(function(key){
-            if (texttags[i][key] > maxval){
-                maxtag = key;
-                maxval = texttags[i][key];
-            }
-        });
-    }
-    console.log(maxtag);
-    console.log(maxval);
 }
 
 function runRegressions(){
