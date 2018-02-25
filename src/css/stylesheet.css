@@ -32,6 +32,11 @@ get_suggestion{
 	background-color:blue;
 }
 
+.buttonHover:hover {
+	background-color: grey;
+	color: black;
+}
+
 .footer {
 	padding-top: 30px;
 	height: 50px;

@@ -72,28 +72,3 @@ function timeCheck(){
             suggestions[limitedTyped];
     }
 }
-
-
-
-//////////////////////////////////////////////////
-/*sentimentList = [0.3, 0.2, 0.5, 0.8, 0.05, 0.08]
-minThreshold = 0.1
-
-for (i = 0; i < sentimentList.length; i++){
-    if (sentimentList[i] > threshold) {
-        return ("Positive sounding")
-    }
-
-    else {
-        return("Negative Sounding")
-
-        if (){
-
-        }
-
-        else {
-
-        }
-    }
-}
-*/
