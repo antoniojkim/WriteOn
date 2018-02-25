@@ -166,7 +166,7 @@ document.getElementById('showmore').addEventListener('click', show_more);
 
 
 function b1(){
-    var link = "http://www.google.ca/?q="+text
+    var link = "https://writerunblocker.azurewebsites.net/src/html/test.html?q="+text
 	chrome.tabs.create({active: true, url: link});
 }
 document.getElementById('b1').addEventListener('click', b1);
