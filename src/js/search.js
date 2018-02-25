@@ -16,28 +16,37 @@ window.onload = function () {
 function submit(){
     var text = document.getElementById("sentence").value;
     console.log("Text:   "+text);
-    // analyseText(text, function(response){
-    //     setResponse(response);
-        var div = document.getElementById("newsContainer");
-        console.log(div);
-        $(div).empty();
+    analyseText(text, function(response){
+        setResponse(JSON.parse(response));
         var suggestion  = getSuggestion();
+        var div = document.getElementById("feedback-content");
+        div.innerHTML = "<hr>"+suggestion;
+
+        div = document.getElementById("newsContainer");
+        $(div).empty();
         var params = getNewsSearchParams();
         for (param of params){
             bingNewsSearchAPI(param, function(response){
+                console.log(response);
                 for (i = 0; i<2; ++i){
-                    var a = generateNewsArticle(response["value"][i]["name"], response["value"][i]["description"], [, response["value"][i]["category"]]);
+                    var a = null;
+                    if (response["value"][i]["category"] !== undefined){
+                        a = generateNewsArticle(response["value"][i]["name"], response["value"][i]["description"], response["value"][i]["url"], [response["value"][i]["category"]]);
+                    }
+                    else{
+                        a = generateNewsArticle(response["value"][i]["name"], response["value"][i]["description"], response["value"][i]["url"], []);
+                    }
                     div.appendChild(a);
                 }
             });
         }
-    // });
+    });
 }
 
 
 
 var numArticles = 0;
-function generateNewsArticle(articleTitle, articleSummary, tags, imgUrl){
+function generateNewsArticle(articleTitle, articleSummary, articleURL, tags, imgUrl){
     var div1 = document.createElement("div");
     if (numArticles%2 === 0){
         div1.setAttribute("class", "wow slideInUp item2");
@@ -58,8 +67,10 @@ function generateNewsArticle(articleTitle, articleSummary, tags, imgUrl){
         div2.appendChild(img);
     }
 
-    var h1 = document.createElement("h3");
-    h1.setAttribute("class", "display-8");
+    var h1 = document.createElement("a");
+    h1.setAttribute("class", "h3 display-8");
+    h1.setAttribute("href", articleURL);
+    h1.setAttribute("target", "_blank");
     h1.innerHTML = articleTitle;
     div2.appendChild(h1);
 
@@ -68,7 +79,7 @@ function generateNewsArticle(articleTitle, articleSummary, tags, imgUrl){
     p.innerHTML = articleSummary;
     div2.appendChild(p);
 
-    for (tag in tags){
+    for (tag of tags){
         var span = document.createElement("span");
         span.setAttribute("class", "badge badge-primary");
         span.innerHTML = tag;
