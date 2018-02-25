@@ -13,7 +13,8 @@ const responses = {
     },
     "negative": {
         "anger": [
-            "You sound like your getting angry. If you didn't really mean to, try going back and revising your writing."
+            "You sound like your getting angry. If you didn't really mean to, try going back and revising your writing.",
+            "Consider using a less powerful tone and use more subtle language as you continue to write."
         ],
         "sadness": [
             "Why so glum, chum? You're writing as if something's got you down. There's nothing wrong with that. Just make sure you don't get carried away..."
@@ -39,7 +40,9 @@ const emotionStrings = ["anger", "surprise", "sadness", "fear", "joy"];
 
 function getSuggestion(){
     var response = getResponse();
-    console.log(generateSuggestion(response));
+    var suggestion = generateSuggestion(response);
+    console.log(suggestion);
+    return suggestion;
 }
 
 function generateSuggestion(response){
