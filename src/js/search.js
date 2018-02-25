@@ -34,6 +34,8 @@ function submit(){
     // });
 }
 
+
+
 var numArticles = 0;
 function generateNewsArticle(articleTitle, articleSummary, tags, imgUrl){
     var div1 = document.createElement("div");
@@ -56,8 +58,8 @@ function generateNewsArticle(articleTitle, articleSummary, tags, imgUrl){
         div2.appendChild(img);
     }
 
-    var h1 = document.createElement("h1");
-    h1.setAttribute("class", "display-4");
+    var h1 = document.createElement("h3");
+    h1.setAttribute("class", "display-8");
     h1.innerHTML = articleTitle;
     div2.appendChild(h1);
 

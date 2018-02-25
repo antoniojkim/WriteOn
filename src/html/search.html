@@ -18,6 +18,8 @@
         <script src="../js/feedback.js"></script>
         <script src="../js/search.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -65,15 +67,15 @@
       .box2 .input_text{
         width: 100%;
           height: 100px;
-          margin: 5px;
+          margin: 0px;
       }
       .box2 .input_button{
         width: 100%;
-        text-align: center;
-          margin: 0px 5px ;
+          margin: 0px 0px ;
+          margin-top: 5px;
       }
       .main_header{
-        margin: 35px;
+        margin: 20px;
         color:white;
       }
       html{
@@ -90,6 +92,7 @@
         min-height: 202px; 
         margin: 4em 0;
         text-align: right;
+        padding: 2em;
       }
       .item3 img{
         height: 200px;
@@ -104,6 +107,7 @@
         min-height: 202px; 
         margin: 2em 0;
         text-align: left;
+        padding: 2em;
       }
       .item2 .container{
           padding: 0;
@@ -112,9 +116,22 @@
         min-height: 200px;
         max-height:300px;
         margin-right: 2em;
+        padding: 10px;
       }
       .title{
         font-size: 5em;
+      }
+          .box3{
+        margin: 1em 0 ;
+        padding: 1em 2em;
+        width: 100%;
+        height: 100%;
+        border: solid 1px #ccc;
+        overflow: hidden;
+        background-color: #ddd;
+      }
+      .badge{
+        margin: 0px 2px; 
       }
 
     </style>
@@ -130,6 +147,16 @@
           <input class = "input_button btn btn-light" type="submit" value="Submit" onclick="submit()">
       </div>
   </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="box3 wow slideInUp">
+    <h1 style="display: inline-block; float: left;">Feedback</h1><i id="feedback-arrow" class="fa fa-angle-down fa-3x" style="float: right; display: inline-block; margin-right: 0.2em;"></i>
+    <div id="feedback-content" style="display: none; width: 100%">
+      <hr>
+      hello
+    </div>
   </div>
 </div>
 
@@ -189,6 +216,22 @@
 
     </div>
   </div>
+  <script type="text/javascript">
+    function feedback(){
+  var x = document.getElementById("feedback-content");
+    if (x.style.display === "none") {
+        x.style.display = "inline-block";
+        document.getElementById("feedback-arrow").classList.remove("fa-angle-down");
+        document.getElementById("feedback-arrow").classList.add("fa-angle-up");
+    } else {
+        x.style.display = "none";
+        document.getElementById("feedback-arrow").classList.remove("fa-angle-up");
+        document.getElementById("feedback-arrow").classList.add("fa-angle-down");
+        
+    }
+}
+document.getElementById('feedback-arrow').addEventListener('click', feedback);
+  </script>
         <script type="text/javascript" src="../js/popup.js"></script>
     </body>
 </html>
