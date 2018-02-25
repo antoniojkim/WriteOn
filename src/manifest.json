@@ -3,6 +3,11 @@
     "name": "sample",
     "description": "A sample extension to get the selected text",
     "version": "1.0",
+	"icons": {
+		"16": "pencil.png",
+		"48": "pencil.png",
+		"128": "pencil.png"
+	},
     "browser_action": {
         "default_popup": "html/popup.html"
     },
